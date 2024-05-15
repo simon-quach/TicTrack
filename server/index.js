@@ -1,5 +1,15 @@
 const express = require("express");
+const cors = require("cors");
+const authRouter = require("./routes/auth");
+
 const app = express();
+
+// ROUTES
+app.use("/auth", authRouter);
+
+// MIDDLEWARE
+app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
