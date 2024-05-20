@@ -95,6 +95,7 @@ const AuthCard = ({ authType }) => {
 
       <div className="flex gap-4">
         <button
+          type="button"
           onClick={handleAuth}
           className="bg-[#FF5C5C] text-white rounded-lg px-6 py-2 self-start font-medium"
         >
