@@ -1,9 +1,9 @@
 const express = require("express");
 const cors = require("cors");
-const authRouter = require("./routes/auth");
-const activeRouter = require("./routes/activeTrackies");
-const requestsRouter = require("./routes/requests");
-const usersRouter = require("./routes/users");
+const authRouter = require("../routes/auth");
+const activeRouter = require("../routes/activeTrackies");
+const requestsRouter = require("../routes/requests");
+const usersRouter = require("../routes/users");
 
 const app = express();
 
