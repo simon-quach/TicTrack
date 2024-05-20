@@ -9,7 +9,9 @@ const Trackies = () => {
   useEffect(() => {
     const fetchTrackies = async () => {
       try {
-        const response = await fetch("http://localhost:8080/users");
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/users`
+        );
         const data = await response.json();
         setTrackies(data.filter((user) => user.userRole === "trackee"));
       } catch (error) {

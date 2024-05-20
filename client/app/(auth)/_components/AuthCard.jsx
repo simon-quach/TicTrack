@@ -14,13 +14,16 @@ const AuthCard = ({ authType }) => {
 
   const handleAuth = async () => {
     try {
-      const response = await fetch("http://localhost:8080/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, userRole, action: authType }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/users/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, userRole, action: authType }),
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();

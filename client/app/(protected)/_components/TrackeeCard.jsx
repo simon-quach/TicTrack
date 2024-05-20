@@ -33,7 +33,7 @@ const TrackeeCard = ({ id, userName, timeStarted, userRole, onDelete }) => {
   const handleStopClick = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8080/activeTrackies/stop",
+        `${process.env.NEXT_PUBLIC_API_URL}/activeTrackies/stop`,
         {
           method: "POST",
           headers: {

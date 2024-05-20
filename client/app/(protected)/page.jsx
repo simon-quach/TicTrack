@@ -16,7 +16,9 @@ const Home = () => {
   useEffect(() => {
     const fetchTrackies = async () => {
       try {
-        const response = await fetch("http://localhost:8080/activeTrackies");
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/activeTrackies`
+        );
         const data = await response.json();
         if (Array.isArray(data)) {
           setTrackies(data);
@@ -49,7 +51,9 @@ const Home = () => {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const response = await fetch("http://localhost:8080/requests");
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/requests`
+        );
         const data = await response.json();
         setRequests(data);
 
@@ -85,7 +89,7 @@ const Home = () => {
     if (existingRequest) {
       try {
         const response = await fetch(
-          `http://localhost:8080/requests/${existingRequest.id}`,
+          `${process.env.NEXT_PUBLIC_API_URL}/requests/${existingRequest.id}`,
           {
             method: "DELETE",
           }
@@ -103,13 +107,16 @@ const Home = () => {
       }
     } else {
       try {
-        const response = await fetch("http://localhost:8080/requests", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ userId, userName }),
-        });
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/requests`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userId, userName }),
+          }
+        );
 
         if (response.ok) {
           const newRequest = await response.json();
@@ -127,7 +134,9 @@ const Home = () => {
 
   const handleCheckinClick = async () => {
     try {
-      const response = await fetch("http://localhost:8080/requests");
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/requests`
+      );
       const data = await response.json();
       setRequests(data);
       setShowModal(true);
@@ -138,16 +147,19 @@ const Home = () => {
 
   const handleApproveRequest = async (requestId) => {
     try {
-      const response = await fetch("http://localhost:8080/requests/approve", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          requestId,
-          timeStarted: new Date().toISOString(),
-        }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/requests/approve`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            requestId,
+            timeStarted: new Date().toISOString(),
+          }),
+        }
+      );
 
       if (response.ok) {
         const newTrackie = await response.json();
