@@ -84,6 +84,7 @@ const AuthCard = ({ authType }) => {
             type="password"
             className="w-full bg-[#f1f1f1] border border-none rounded-lg px-4 py-3"
             placeholder="Enter your password"
+            disabled
           />
         </div>
 
