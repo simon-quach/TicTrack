@@ -12,7 +12,7 @@ const CheckinRequestsModal = ({
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-6 rounded-lg">
-        <h2 className="text-2xl mb-4">Pending Check-in Requests</h2>
+        <h2 className="text-2xl mb-4 font-bold">Pending Check-in Requests</h2>
         {requests.length > 0 ? (
           <ul>
             {requests.map((request) => (
@@ -20,7 +20,7 @@ const CheckinRequestsModal = ({
                 <span>{request.userName}</span>
                 <button
                   onClick={() => onApproveRequest(request.id)}
-                  className="ml-4 bg-green-500 text-white px-2 py-1 rounded"
+                  className="ml-4 bg-[#4dd858] text-white px-3 py-2 rounded hover:bg-[#43c74e] hover:cursor-pointer"
                 >
                   Approve
                 </button>
@@ -32,7 +32,7 @@ const CheckinRequestsModal = ({
         )}
         <button
           onClick={onClose}
-          className="mt-4 bg-red-500 text-white px-4 py-2 rounded"
+          className="mt-4 bg-[#FF5C5C] text-white px-4 py-2 rounded hover:bg-[#e95c5c] hover:cursor-pointer"
         >
           Close
         </button>

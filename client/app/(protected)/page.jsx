@@ -199,7 +199,7 @@ const Home = () => {
       {userRole === "trackee" && !isActive ? (
         <div
           onClick={handleRequestCheckin}
-          className="fixed bottom-4 left-[50%] translate-x-[-50%] bg-[#FF5C5C] text-white w-[calc(100vw-64px)] text-center font-medium rounded-[8px] py-2 shadow-lg hover:bg-[#e95c5c] hover:cursor-pointer"
+          className="fixed z-[-1] bottom-4 left-[50%] translate-x-[-50%] bg-[#FF5C5C] text-white w-[calc(100vw-64px)] text-center font-medium rounded-[8px] py-2 shadow-lg hover:bg-[#e95c5c] hover:cursor-pointer"
         >
           {existingRequest ? "Cancel Request" : "Request Check-in"}
         </div>
@@ -207,7 +207,7 @@ const Home = () => {
         userRole === "supervisor" && (
           <div
             onClick={handleCheckinClick}
-            className="fixed bottom-4 left-[50%] translate-x-[-50%] bg-[#FF5C5C] text-white w-[calc(100vw-64px)] text-center font-medium rounded-[8px] py-2 shadow-lg hover:bg-[#e95c5c] hover:cursor-pointer"
+            className="fixed z-[-1] bottom-4 left-[50%] translate-x-[-50%] bg-[#FF5C5C] text-white w-[calc(100vw-64px)] text-center font-medium rounded-[8px] py-2 shadow-lg hover:bg-[#e95c5c] hover:cursor-pointer"
           >
             Check in
           </div>

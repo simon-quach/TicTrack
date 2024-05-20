@@ -36,13 +36,13 @@ const ProfileModal = ({ showModal, onClose }) => {
         <div className="mt-4">
           <button
             onClick={onClose}
-            className="bg-red-500 text-white px-4 py-2 rounded mr-4"
+            className="bg-[#FF5C5C] text-white px-4 py-2 rounded mr-4"
           >
             Close
           </button>
           <button
             onClick={handleSignOut}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className="border-[#FF5C5C] border-[1px] text-[#FF5C5C] px-4 py-2 rounded"
           >
             Sign Out
           </button>
