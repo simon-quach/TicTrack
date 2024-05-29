@@ -28,11 +28,11 @@ router.get("/", async (req, res) => {
 
 // Login or sign up user
 router.post("/login", async (req, res) => {
-  const { name, userRole, action } = req.body;
-  if (!name || !userRole || !action) {
+  const { name, userRole, pin, action } = req.body;
+  if (!name || !userRole || !pin || !action) {
     return res
       .status(400)
-      .json({ error: "Name, userRole, and action are required" });
+      .json({ error: "Name, userRole, PIN, and action are required" });
   }
 
   try {
@@ -53,7 +53,15 @@ router.post("/login", async (req, res) => {
       if (!querySnapshot.empty) {
         return res.status(409).json({ error: "User already exists" });
       }
-      const newUser = { name, userRole, logs: [] };
+
+      // Check if the PIN is already in use
+      const pinQuery = query(usersRef, where("pin", "==", pin));
+      const pinSnapshot = await getDocs(pinQuery);
+      if (!pinSnapshot.empty) {
+        return res.status(409).json({ error: "PIN already in use" });
+      }
+
+      const newUser = { name, userRole, pin, logs: [] };
       const docRef = await addDoc(usersRef, newUser);
       return res.status(201).json({ userId: docRef.id, ...newUser });
     }

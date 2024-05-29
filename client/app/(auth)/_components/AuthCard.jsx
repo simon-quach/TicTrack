@@ -9,6 +9,7 @@ import Link from "next/link";
 const AuthCard = ({ authType }) => {
   const [name, setName] = useState("");
   const [userRole, setUserRole] = useState("trackee");
+  const [pin, setPin] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
 
@@ -21,7 +22,7 @@ const AuthCard = ({ authType }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ name, userRole, action: authType }),
+          body: JSON.stringify({ name, userRole, pin, action: authType }),
         }
       );
 
@@ -79,12 +80,14 @@ const AuthCard = ({ authType }) => {
         )}
 
         <div className="mt-8">
-          <div className="font-bold mb-2">Password</div>
+          <div className="font-bold mb-2">PIN</div>
           <input
             type="password"
             className="w-full bg-[#f1f1f1] border border-none rounded-lg px-4 py-3"
-            placeholder="Enter your password"
-            disabled
+            placeholder="Enter your 4-digit PIN"
+            maxLength={4}
+            onChange={(e) => setPin(e.target.value)}
+            value={pin}
           />
         </div>
 
